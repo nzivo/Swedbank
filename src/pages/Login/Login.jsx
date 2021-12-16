@@ -12,6 +12,7 @@ export class Login extends Component {
     }
 
     render() {
+        const {values, handleChange} = this.props;
         return (
             <div className="main-div">
                 <React.Fragment>
@@ -23,7 +24,7 @@ export class Login extends Component {
                                     component="img"
                                     height="194"
                                     image="/banking-homepage.jpg"
-                                    alt="Paella dish"
+                                    alt="Banking App"
                                 />
                                 <CardContent>
                                     <Divider variant="middle">
@@ -87,6 +88,8 @@ export class Login extends Component {
                                         required
                                         fullWidth
                                         margin="normal"
+                                        onChange={handleChange('email')}
+                                        defaultValue={values.email}
                                     />
                                     <TextField
                                         label="Password"
@@ -96,6 +99,8 @@ export class Login extends Component {
                                         required
                                         fullWidth
                                         margin="normal"
+                                        onChange={handleChange('password')}
+                                        defaultValue={values.password}
                                     />
                                     <FormControlLabel
                                         control={<Checkbox value="remember" color="primary" />}
@@ -106,6 +111,7 @@ export class Login extends Component {
                                         fullWidth
                                         variant="contained"
                                         color="primary"
+                                        onClick={this.continue}
                                     >
                                         Access my Account
                                     </Button>
@@ -136,6 +142,7 @@ export class Login extends Component {
                                         variant="outlined" 
                                         margin="normal"
                                         startIcon={<RiFingerprintFill />}
+                                        onClick={this.continue}
                                     >
                                         Sign In With Biometrics
                                     </Button>
