@@ -30,14 +30,6 @@ export class Application extends Component {
                         pt={2}>
                         Small Loan Application<br/> Step 1: Amount Selection
                     </Typography>
-                    <Typography 
-                        align="center"
-                        variant="body2"
-                        color="text.secondary"
-                        fontWeight={400}
-                        pt={2}>
-                        All Fields Marked * are Required
-                    </Typography>
                     <Divider variant="middle">
                         <RiMoneyEuroBoxLine />
                     </Divider>
@@ -75,10 +67,8 @@ export class Application extends Component {
                                         valueLabelDisplay="on"
                                         label="Loan Amount"
                                         size="small"
-                                        defaultValue={500}
                                         min={500}
                                         max={20000}
-                                        aria-label="Small"
                                         onChange={handleChange('loanAmount')}
                                         defaultValue={values.loanAmount}
                                     />
@@ -113,10 +103,8 @@ export class Application extends Component {
                                         valueLabelDisplay="on"
                                         label="Loan Term"
                                         size="small"
-                                        defaultValue={6}
                                         min={6}
                                         max={60}
-                                        aria-label="Small"
                                         onChange={handleChange('loanTerm')}
                                         defaultValue={values.loanTerm}
                                     />
@@ -164,8 +152,9 @@ export class Application extends Component {
                                 <Box component="div" sx={{ p: 1 }}>
                                 </Box>
                                 <FormLabel component="legend">Do you have obligations outside Swedbank</FormLabel>
-                                <RadioGroup row aria-label="gender" name="row-radio-buttons-group" 
-                                    onChange={handleChange('obligations')}>
+                                <RadioGroup row aria-label="gender" name="obligations" 
+                                    onChange={handleChange('obligations')} 
+                                    defaultValue={values.obligations}>
                                     <FormControlLabel value="I have obligations Outside Swedbank" control={<Radio />} label="Yes" />
                                     <FormControlLabel value="I do not have obligations Outside Swedbank" control={<Radio />} label="No" />
                                 </RadioGroup>

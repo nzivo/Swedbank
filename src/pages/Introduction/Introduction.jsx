@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Application from '../Application/Application';
+import Confirmation from '../Confirmation/Confirmation';
 import Login from '../Login/Login';
+import PersonalData from '../PersonalData/PersonalData';
+import Success from '../Success/Success';
 
 export class Introduction extends Component {
     state = {
@@ -12,7 +15,14 @@ export class Introduction extends Component {
         loanTerm: '',
         repaymentDate: '',
         netSalary: null,
-        obligations: ''
+        obligations: '',
+        firstName: '',
+        lastName: '',
+        code: null,
+        education: '',
+        position: '',
+        marital: '',
+        telephone: ''
     }
 
     //Next Step
@@ -38,8 +48,8 @@ export class Introduction extends Component {
 
     render() {
         const {step} = this.state;
-        const {userName, email, password,loanAmount,loanTerm,repaymentDate,netSalary,obligations} = this.state;
-        const values = {userName, email, password,loanAmount,loanTerm,repaymentDate,netSalary,obligations}
+        const {userName, email, password,loanAmount,loanTerm,repaymentDate,netSalary,obligations, firstName, lastName, code, education, position, marital, telephone} = this.state;
+        const values = {userName, email, password,loanAmount,loanTerm,repaymentDate,netSalary,obligations, firstName, lastName, code, education, position, marital, telephone}
         switch(step) {
             case 1:
                 return (
@@ -57,19 +67,27 @@ export class Introduction extends Component {
                     values={values}
                 />)
             case 3:
-                return <h1>Personal Data</h1>
+                return (<PersonalData
+                    nextStep = {this.nextStep}
+                    previousStep = {this.previousStep}
+                    handleChange = {this.handleChange}
+                    values={values}
+                />)
             case 4:
-                return <h1>Confirmation</h1>
+                return (<Confirmation
+                    nextStep = {this.nextStep}
+                    previousStep = {this.previousStep}
+                    values={values}
+                />)
             case 5:
-                return <h1>Success</h1>
+                return (<Success />)
             default:
-                return(
-                    <Login
-                        nextStep = {this.nextStep}
-                        handleChange = {this.handleChange}
-                        values={values}
-                    />
-                )
+                return (<Application
+                    nextStep = {this.nextStep}
+                    previousStep = {this.previousStep}
+                    handleChange = {this.handleChange}
+                    values={values}
+                />)
         }
     }
 }
