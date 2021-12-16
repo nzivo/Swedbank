@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Application from '../Application/Application';
 import Login from '../Login/Login';
 
 export class Introduction extends Component {
@@ -6,7 +7,12 @@ export class Introduction extends Component {
         step: 1,
         userName: '',
         email: '',
-        password: ''
+        password: '',
+        loanAmount: null,
+        loanTerm: '',
+        repaymentDate: '',
+        netSalary: null,
+        obligations: ''
     }
 
     //Next Step
@@ -27,13 +33,13 @@ export class Introduction extends Component {
 
     //Handling changes
     handleChange = input => e => {
-        this.setState({[input]: e.target.value});
+        this.setState({ [input]: e.target.value });
     }
 
     render() {
         const {step} = this.state;
-        const {userName, email, password} = this.state;
-        const values = {userName, email, password}
+        const {userName, email, password,loanAmount,loanTerm,repaymentDate,netSalary,obligations} = this.state;
+        const values = {userName, email, password,loanAmount,loanTerm,repaymentDate,netSalary,obligations}
         switch(step) {
             case 1:
                 return (
@@ -44,7 +50,12 @@ export class Introduction extends Component {
                     />
                 )
             case 2:
-                return <h1>Application</h1>
+                return (<Application
+                    nextStep = {this.nextStep}
+                    previousStep = {this.previousStep}
+                    handleChange = {this.handleChange}
+                    values={values}
+                />)
             case 3:
                 return <h1>Personal Data</h1>
             case 4:
