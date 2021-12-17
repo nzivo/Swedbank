@@ -34,7 +34,7 @@ export class Application extends Component {
                         <RiMoneyEuroBoxLine />
                     </Divider>
                     <CssBaseline />
-                    <form autoComplete='off'>
+                    <form autoComplete='off' onSubmit={this.continue}>
                         <Grid container>
                             <Grid item xs={12} md={6} xl={6} p={3}>
                                 <Typography 
@@ -69,6 +69,7 @@ export class Application extends Component {
                                         size="small"
                                         min={500}
                                         max={20000}
+                                        required
                                         onChange={handleChange('loanAmount')}
                                         defaultValue={values.loanAmount}
                                     />
@@ -105,6 +106,7 @@ export class Application extends Component {
                                         size="small"
                                         min={6}
                                         max={60}
+                                        required
                                         onChange={handleChange('loanTerm')}
                                         defaultValue={values.loanTerm}
                                     />
@@ -152,9 +154,11 @@ export class Application extends Component {
                                 <Box component="div" sx={{ p: 1 }}>
                                 </Box>
                                 <FormLabel component="legend">Do you have obligations outside Swedbank</FormLabel>
-                                <RadioGroup row aria-label="gender" name="obligations" 
+                                <RadioGroup row aria-label="obligations" name="obligations" 
                                     onChange={handleChange('obligations')} 
-                                    defaultValue={values.obligations}>
+                                    defaultValue={values.obligations}
+                                    required
+                                >
                                     <FormControlLabel value="I have obligations Outside Swedbank" control={<Radio />} label="Yes" />
                                     <FormControlLabel value="I do not have obligations Outside Swedbank" control={<Radio />} label="No" />
                                 </RadioGroup>
@@ -182,7 +186,6 @@ export class Application extends Component {
                                     type="submit"
                                     variant="contained"
                                     color="primary"
-                                    onClick={this.continue}
                                 >
                                     Next
                                 </Button>

@@ -32,7 +32,7 @@ export class PersonalData extends Component {
                         <RiMoneyEuroBoxLine />
                     </Divider>
                     <CssBaseline />
-                    <form autoComplete='off'>
+                    <form autoComplete='off' onSubmit={this.continue}>
                         <Grid container>
                             <Grid item xs={12} md={6} xl={6} p={3}>
                                 <Typography 
@@ -100,6 +100,7 @@ export class PersonalData extends Component {
                                     defaultValue={values.education}
                                     label="Education"
                                     onChange={handleChange('education')}
+                                    required
                                     >
                                     <MenuItem value="Primary">Primary</MenuItem>
                                     <MenuItem value="Secondary">Secondary</MenuItem>
@@ -118,6 +119,7 @@ export class PersonalData extends Component {
                                     defaultValue={values.position}
                                     label="Education"
                                     onChange={handleChange('position')}
+                                    required
                                     >
                                     <MenuItem value="Worker">Worker</MenuItem>
                                     <MenuItem value="Specialist / Office Worker">Specialist / Office Worker</MenuItem>
@@ -151,6 +153,7 @@ export class PersonalData extends Component {
                                     defaultValue={values.marital}
                                     label="Marital Status"
                                     onChange={handleChange('marital')}
+                                    required
                                     >
                                     <MenuItem value="Single">Single</MenuItem>
                                     <MenuItem value="Married">Married</MenuItem>
@@ -202,7 +205,6 @@ export class PersonalData extends Component {
                                     type="submit"
                                     variant="contained"
                                     color="primary"
-                                    onClick={this.continue}
                                 >
                                     Next
                                 </Button>

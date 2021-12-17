@@ -10,6 +10,7 @@ export class Login extends Component {
         e.preventDefault();
         this.props.nextStep();
     }
+    
 
     render() {
         const {values, handleChange} = this.props;
@@ -79,24 +80,28 @@ export class Login extends Component {
                                     pt={2}>
                                     Get better loans which make it manageable to repay
                                 </Typography>
-                                <form autoComplete='off'>
+                                <form autoComplete='off' onSubmit={this.continue}>
                                     <TextField
                                         label="Email Address"
+                                        id='email'
+                                        type="email"
                                         size="small"
                                         variant="outlined"
                                         color="primary"
-                                        required
+                                        required = 'true'
                                         fullWidth
                                         margin="normal"
                                         onChange={handleChange('email')}
                                         defaultValue={values.email}
                                     />
                                     <TextField
+                                        id="password"
                                         label="Password"
+                                        type="password"
                                         size="small"
                                         variant="outlined"
                                         color="primary"
-                                        required
+                                        required={true}
                                         fullWidth
                                         margin="normal"
                                         onChange={handleChange('password')}
@@ -111,7 +116,6 @@ export class Login extends Component {
                                         fullWidth
                                         variant="contained"
                                         color="primary"
-                                        onClick={this.continue}
                                     >
                                         Access my Account
                                     </Button>

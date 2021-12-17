@@ -32,7 +32,7 @@ export class Confirmation extends Component {
                         <RiMoneyEuroBoxLine />
                     </Divider>
                     <CssBaseline />
-                    <form autoComplete='off'>
+                    <form autoComplete='off' onSubmit={this.continue}>
                         <Grid container>
                             <Grid item xs={12} md={6} xl={6} p={3}>
                                 <Typography 
@@ -153,8 +153,7 @@ export class Confirmation extends Component {
                                     </ListItem>
                                 </List>
                                 <FormControlLabel
-                                    required
-                                    control={<Checkbox value="remember" color="primary" />}
+                                    control={<Checkbox value="remember" color="primary" required/>}
                                     label="I confirm the details submitted are true to the best of my knowledge"
                                 />
                                 
@@ -180,7 +179,6 @@ export class Confirmation extends Component {
                                     type="submit"
                                     variant="contained"
                                     color="primary"
-                                    onClick={this.continue}
                                 >
                                     Complete My Application
                                 </Button>
